@@ -77,22 +77,71 @@ public class ReverseArrayTraversal {
 		
 	}
 	
+	/*
+	 * Reverse the order of elements in an array. For example, A = [1,2,3,4,5,6], Output = [6,5,4,3,2,1]
+	 * using O(1) space
+	 */
+	public static int[] reverseNums(int[] a) {
+		/*
+		 * Time Complexity: O(n)
+		 * Space Complexity: O(1)
+		 */
+		int start = 0;
+		int end= a.length-1;
+		
+		while(start<end) {
+			int temp = a[start];
+			a[start] = a[end];
+			a[end]=temp;
+			start++;
+			end--;
+		}
+		
+		return a;
+	}
+	
+	/*
+	 * Two Sum Problem - Find 2 numbers in a sorted array that sum to X. For example, if A = [1,2,3,4,5] and X = 9, the numbers are 4 and 5.
+	 */
+	public static int[] twoSum(int[] a, int target) {
+		/*
+		 * Time Complexity: O(n)
+		 * Space Complexity: O(1)
+		 */
+		//assuming array is sorted 
+		int start=0;
+		int end = a.length-1;
+		
+		while(start<end) {
+			int sum = a[start] +a[end];
+			
+			if(sum<target) {
+				start++;
+			}else if(sum>target) {
+				end--;
+			}else {
+				int[] pair = {a[start], a[end]};
+				return pair;
+			}
+		}
+		return null;
+	}
 	
 	public static void main(String [] args) {
-//		int[] nums = {1,2,5,6,8,-1,-1,-1};
-		int[] nums = {1,3};
-
-		nums = replaceReverse(nums);
+		int[] nums = {0,0,1,2};
 		
-		for(int x:nums) {
-			//System.out.print(x+",");
+		int[] ans = twoSum(nums, 3);
+		
+		
+		for(int x:ans) {
+			System.out.print(x+",");
 		}
 		
 		
 		String test = "hi im isa";
 		
 	
-		System.out.println(reverseSentence(test));
+		//System.out.println(reverseSentence(test));
 	}
 	
 	
